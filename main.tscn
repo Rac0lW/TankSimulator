@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://6vqs3xuym6xs"]
+
+[ext_resource type="PackedScene" uid="uid://dim7y2x36vhux" path="res://tank.tscn" id="1_cq446"]
+[ext_resource type="Script" path="res://camera_controller.gd" id="2_15bvo"]
+[ext_resource type="PackedScene" uid="uid://ce8dohbcsyrue" path="res://terrian.tscn" id="3_yw5mw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_kwe7a"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_mcnne"]
+sky_material = SubResource("ProceduralSkyMaterial_kwe7a")
+
+[sub_resource type="Environment" id="Environment_v61u4"]
+background_mode = 2
+sky = SubResource("Sky_mcnne")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v61u4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Terrian" parent="." instance=ExtResource("3_yw5mw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Player" type="Node3D" parent="."]
+
+[node name="Tank" parent="Player" instance=ExtResource("1_cq446")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.59548, 0)
+
+[node name="Pivot" type="Node3D" parent="Player" node_paths=PackedStringArray("cam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.15991, -0.873635)
+script = ExtResource("2_15bvo")
+cam = NodePath("Camera3D")
+
+[node name="Camera3D" type="Camera3D" parent="Player/Pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3.2, 3)
+current = true

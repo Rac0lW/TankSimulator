@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dim7y2x36vhux"]
+
+[ext_resource type="Script" path="res://tank.gd" id="1_0srcp"]
+[ext_resource type="PackedScene" uid="uid://k86cjwwvrhu7" path="res://tank_head.tscn" id="1_nbinv"]
+[ext_resource type="PackedScene" uid="uid://ddkulj7hkuqss" path="res://tankbody.tscn" id="2_j862f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mp74i"]
+size = Vector3(1.43286, 0.410645, 2.42664)
+
+[node name="Tank" type="CharacterBody3D"]
+script = ExtResource("1_0srcp")
+
+[node name="TankHead" parent="." instance=ExtResource("1_nbinv")]
+transform = Transform3D(-0.2, 0, 1.74846e-08, 0, 0.2, 0, -1.74846e-08, 0, -0.2, 0.0238839, -0.207371, -0.102983)
+
+[node name="Camera3D" type="Camera3D" parent="TankHead"]
+transform = Transform3D(-5, 0, 4.37114e-07, 0, 5, 0, -4.37114e-07, 0, -5, 0.759059, 0, 3.4649)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00208092, -0.541755, 0.105379)
+shape = SubResource("BoxShape3D_mp74i")
+
+[node name="Tankbody" parent="." instance=ExtResource("2_j862f")]
+transform = Transform3D(-0.73, 0, 1.04645e-07, 0, 0.2, 0, -6.38186e-08, 0, -1.197, -4.65661e-09, -0.569035, 0.000400096)

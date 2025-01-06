@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://ce8dohbcsyrue"]
+
+[ext_resource type="PackedScene" uid="uid://c5r3a0koa3y71" path="res://Assets/Models/Protypes/GLB format/animal-bison.glb" id="1_c6ksv"]
+[ext_resource type="PackedScene" uid="uid://bkt3ue7pm4b06" path="res://Assets/Models/Protypes/GLB format/wall-diagonal-low.glb" id="2_psf6h"]
+[ext_resource type="PackedScene" uid="uid://bfs4uy3ufx4pa" path="res://Assets/Models/Protypes/GLB format/wall-corner-rounded.glb" id="3_fkg6x"]
+[ext_resource type="PackedScene" uid="uid://dnlnruuudllh4" path="res://Assets/Models/Protypes/GLB format/wall-corner.glb" id="4_v7c6r"]
+[ext_resource type="PackedScene" uid="uid://dvcwufv8i2y6t" path="res://Assets/Models/Protypes/GLB format/wall-corner-rounded-low.glb" id="5_62ilj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpmdk"]
+albedo_color = Color(0.110016, 0.273438, 0.1164, 1)
+
+[node name="Terrian" type="Node3D"]
+
+[node name="Base" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.58367, -20.6661)
+use_collision = true
+size = Vector3(237.045, 1, 359.263)
+material = SubResource("StandardMaterial3D_bpmdk")
+
+[node name="animal-bison2" parent="." instance=ExtResource("1_c6ksv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4, -3, -7.7281)
+
+[node name="wall-diagonal-low2" parent="." instance=ExtResource("2_psf6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.81827, -3.08367, -16.1832)
+
+[node name="wall-corner-rounded2" parent="." instance=ExtResource("3_fkg6x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.06258, -3.08367, -14.6632)
+
+[node name="wall-corner2" parent="." instance=ExtResource("4_v7c6r")]
+transform = Transform3D(0.819842, 0, -0.57259, 0, 1, 0, 0.57259, 0, 0.819842, 10.4292, -3.08367, -13.0494)
+
+[node name="wall-corner-rounded-low2" parent="." instance=ExtResource("5_62ilj")]
+transform = Transform3D(0.336339, 0, 0.941741, 0, 1, 0, -0.941741, 0, 0.336339, 5.14077, -3.08367, -15.5125)
