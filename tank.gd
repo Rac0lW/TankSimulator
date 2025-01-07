@@ -9,10 +9,21 @@ const JUMP_VELOCITY = 4.5
 
 @onready var tank_head: MeshInstance3D = $TankHead
 @onready var tank_cam: Camera3D = $TankHead/Camera3D
+@onready var camera_3d: Camera3D = $"../Pivot/Camera3D"
 
 
 
 var current_turret_direction: Vector3
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Aiming") and camera_3d.current == true:
+		tank_cam.make_current()
+		print("Camera Switching")
+		
+	
+	if event.is_action_released("Aiming") and camera_3d.current == false:
+		camera_3d.make_current()
+		
 
 func _ready() -> void:
 	current_turret_direction = -tank_head.global_transform.basis.z
